@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sazón 24/7 — Venezuelan + Mexican street food in downtown Toledo. Flavor that never stops. 322 N. Erie St. Call 419.820.6767"
+    />
+    <title>Sazón 24/7 — Venezuelan + Mexican Street Food | Downtown Toledo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#menu" data-i18n="skip">Skip to menu</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="#top" aria-label="Sazón 24/7 home">
+          <span class="logo-mark">Sazón</span>
+          <span class="logo-24">24/7</span>
+        </a>
+
+        <div class="header-actions">
+          <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="lang.label">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">
+              <span data-i18n="lang.en">English</span>
+            </button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">
+              <span data-i18n="lang.es">Español</span>
+            </button>
+          </div>
+
+          <nav class="nav" aria-label="Primary">
+            <a href="#menu" data-i18n="nav.menu">Menu</a>
+            <a href="#about" data-i18n="nav.about">About</a>
+            <a href="#visit" data-i18n="nav.visit">Visit</a>
+            <a class="nav-cta" href="tel:4198206767" data-i18n="nav.call">Call</a>
+          </nav>
+
+          <button
+            type="button"
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            data-i18n-aria="nav.open"
+            aria-label="Open menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <nav id="mobile-nav" class="mobile-nav" hidden>
+        <a href="#menu" data-i18n="nav.menu">Menu</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#visit" data-i18n="nav.visit">Visit</a>
+        <a href="tel:4198206767" data-i18n="nav.callFull">Call 419.820.6767</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container hero-content">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Downtown Toledo · 322 N. Erie St.</p>
+          <h1>
+            <span class="hero-title">Sazón 24/7</span>
+            <span class="hero-tagline" data-i18n="hero.tagline">Flavor that never stops</span>
+          </h1>
+          <p class="hero-sub" data-i18n="hero.sub">
+            Venezuelan + Mexican street food — arepas, empanadas, tacos, quesabirria, burgers, and more.
+            Open around the clock when you’re hungry.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu" data-i18n="hero.ctaMenu">See the menu</a>
+            <a class="btn btn-ghost" href="tel:4198206767">419.820.6767</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="section menu-section">
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow" data-i18n="menu.eyebrow">Welcome to the menu</p>
+            <h2 data-i18n="menu.title">What we’re serving</h2>
+            <p class="section-lead" data-i18n="menu.lead">
+              Full menu from our print card — arepas, plates, tacos, and more. Call for the latest or specials.
+            </p>
+          </header>
+
+          <nav class="menu-jump" aria-label="Menu categories">
+            <a href="#menu-venezuelan" data-i18n="jump.venezuelan">Venezuelan</a>
+            <a href="#menu-burgers" data-i18n="jump.burgers">Burgers</a>
+            <a href="#menu-empanadas" data-i18n="jump.empanadas">Empanadas</a>
+            <a href="#menu-pasteles" data-i18n="jump.pasteles">Pasteles</a>
+            <a href="#menu-plates" data-i18n="jump.plates">Mexican plates</a>
+            <a href="#menu-alacarte" data-i18n="jump.alacarte">A la carte</a>
+            <a href="#menu-apps" data-i18n="jump.apps">Appetizers</a>
+            <a href="#menu-sides" data-i18n="jump.sides">Sides</a>
+            <a href="#menu-drinks" data-i18n="jump.drinks">Drinks</a>
+          </nav>
+
+          <div class="menu-grid">
+            <article id="menu-venezuelan" class="menu-card">
+              <h3 data-i18n="cat.venezuelan">Venezuelan food</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.classicArepa">Classic Arepa</span>
+                    <span class="item-price">$5.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.americanArepa">American Arepa</span>
+                    <span class="item-price">$6.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.americanArepa">Egg, bacon, sausage &amp; cheese</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.laCotra">La Cotra</span>
+                    <span class="item-price">$7.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.laCotra">With ham and cheese</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.reinaPepiada">Reina Pepiada</span>
+                    <span class="item-price">$7.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.reinaPepiada">Chicken and avocado filling</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.arepaBurger">Arepa Burger</span>
+                    <span class="item-price">$7.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.arepaBurger">Tomato, lettuce, cheese, onion &amp; ground beef</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.laPaluda">La Paluda</span>
+                    <span class="item-price">$8.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.laPaluda">Shredded beef and cheese</p>
+                </li>
+              </ul>
+            </article>
+
+            <article id="menu-burgers" class="menu-card">
+              <h3 data-i18n="cat.burgers">Full burgers</h3>
+              <p class="menu-note" data-i18n="note.burgers">All burgers come with french fries</p>
+              <ul class="menu-list">
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.shreddedChicken">Shredded chicken</span>
+                    <span class="item-price">$11.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.burgerToppings">Egg, bacon, cheese, potato stick &amp; coleslaw</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.classicAmerican">Classic American</span>
+                    <span class="item-price">$11.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.classicAmerican">Beef, lettuce, tomato, onion, egg, bacon &amp; cheese</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.shreddedBeef">Shredded beef</span>
+                    <span class="item-price">$12.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.burgerToppings">Egg, bacon, cheese, potato stick &amp; coleslaw</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.specialBurger">Special burger</span>
+                    <span class="item-price">$15.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.specialBurger">Beef, chicken, pork chop, potato stick &amp; coleslaw</p>
+                </li>
+              </ul>
+            </article>
+
+            <article id="menu-empanadas" class="menu-card">
+              <h3 data-i18n="cat.empanadas">Empanadas</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.cheese">Cheese</span>
+                    <span class="item-price">$4.50</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.groundBeefRice">Ground beef and rice</span>
+                    <span class="item-price">$5.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.pork">Pork</span>
+                    <span class="item-price">$5.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.shreddedChicken">Shredded chicken</span>
+                    <span class="item-price">$5.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.shreddedBeef">Shredded beef</span>
+                    <span class="item-price">$5.50</span>
+                  </div>
+                </li>
+              </ul>
+            </article>
+
+            <article id="menu-pasteles" class="menu-card">
+              <h3 data-i18n="cat.pasteles">Pasteles Andinos</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.cheese">Cheese</span>
+                    <span class="item-price">$3.50</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.groundBeefRice">Ground beef and rice</span>
+                    <span class="item-price">$3.50</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.guavaCheese">Guava and cheese</span>
+                    <span class="item-price">$3.50</span>
+                  </div>
+                </li>
+              </ul>
+            </article>
+
+            <article id="menu-plates" class="menu-card">
+              <h3 data-i18n="cat.plates">Mexican plates</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.streetTacos">Street Tacos</span>
+                    <span class="item-price">$10.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.streetTacosPlate">Steak, chicken, or mixed · with rice and beans</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.combo2">Combo II</span>
+                    <span class="item-price">$12.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.combo2">Steak, chicken, or mixed · rice, beans, salad &amp; sour cream</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.quesadillas">Quesadillas</span>
+                    <span class="item-price">$14.00</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.quesadillasPlate">Steak, chicken, or mixed · onion, cilantro &amp; cheese</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.fajitas">Fajitas</span>
+                    <span class="item-price">$16.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.fajitas">Steak, chicken, or mixed · rice, beans, salad &amp; sour cream</p>
+                </li>
+              </ul>
+            </article>
+
+            <article id="menu-alacarte" class="menu-card">
+              <h3 data-i18n="cat.alacarte">A la carte</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.hardTaco">Hard Taco</span>
+                    <span class="item-price">$3.50</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.tacoBasic">Beef or chicken, lettuce &amp; shredded cheese</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.softTaco">Soft Taco</span>
+                    <span class="item-price">$3.50</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.tacoBasic">Beef or chicken, lettuce &amp; shredded cheese</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.streetTaco">Street Taco</span>
+                    <span class="item-price">$3.99</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.streetTaco">Onion &amp; cilantro · steak, chicken, or chorizo</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.quesabirria">Quesabirria</span>
+                    <span class="item-price">$4.00</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.quesabirria">Lettuce, tomato &amp; sour cream</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.tostada">Tostada</span>
+                    <span class="item-price">$5.00</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.tostada">Beef, beans, chicken, or cheese</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.burrito">Burrito</span>
+                    <span class="item-price">$7.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.quesadilla">Quesadilla</span>
+                    <span class="item-price">$9.00</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.quesadilla">Beef, chicken, or cheese</p>
+                </li>
+              </ul>
+            </article>
+
+            <article id="menu-apps" class="menu-card">
+              <h3 data-i18n="cat.apps">Appetizers</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.cheeseDip">Cheese Dip</span>
+                    <span class="item-price">$4.50</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.beanDip">Bean Dip</span>
+                    <span class="item-price">$6.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.guacamole">Guacamole</span>
+                    <span class="item-price">$6.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.choriqueso">Choriqueso</span>
+                    <span class="item-price">$7.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.wings">Chicken Wings</span>
+                    <span class="item-price">$11.00</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.wings">6 pieces · buffalo, BBQ, or ranch</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.nachos">Nachos</span>
+                    <span class="item-price">$12.00</span>
+                  </div>
+                  <p class="item-desc" data-i18n="desc.nachos">Chicken, ground beef, or cheese</p>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.asadaFries">Asada Fries</span>
+                    <span class="item-price">$13.00</span>
+                  </div>
+                </li>
+              </ul>
+            </article>
+
+            <article id="menu-sides" class="menu-card">
+              <h3 data-i18n="cat.sides">Sides</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.fries">French fries</span>
+                    <span class="item-price">$1.95</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.jalapenos">Grilled jalapeños</span>
+                    <span class="item-price">$1.99</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.lettuce">Lettuce</span>
+                    <span class="item-price">$1.99</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.tomato">Tomato</span>
+                    <span class="item-price">$1.99</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.onions">Onions</span>
+                    <span class="item-price">$1.99</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.shreddedCheese">Shredded cheese</span>
+                    <span class="item-price">$1.99</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.limes">Limes</span>
+                    <span class="item-price">$0.99</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.flourTortillas">Flour tortillas</span>
+                    <span class="item-price">$2.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.cornTortillas">Corn tortillas</span>
+                    <span class="item-price">$3.50</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.beans">Beans</span>
+                    <span class="item-price">$3.50</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.rice">Rice</span>
+                    <span class="item-price">$3.50</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.riceBeans">Rice and beans</span>
+                    <span class="item-price">$6.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.sideSteak">Side of steak</span>
+                    <span class="item-price">$8.99</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.sideChicken">Side of chicken</span>
+                    <span class="item-price">$8.99</span>
+                  </div>
+                </li>
+              </ul>
+            </article>
+
+            <article id="menu-drinks" class="menu-card">
+              <h3 data-i18n="cat.drinks">Beverages</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.soda">Soda can</span>
+                    <span class="item-price">$2.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.water">Bottle water</span>
+                    <span class="item-price">$2.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.energy">Energy drinks</span>
+                    <span class="item-price">$3.50</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.icedTea">Iced tea</span>
+                    <span class="item-price">$3.50</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.coffee">Coffee</span>
+                    <span class="item-price">$4.00</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-row">
+                    <span class="item-name" data-i18n="item.milkshake">Milkshake</span>
+                    <span class="item-price">$5.00</span>
+                  </div>
+                </li>
+              </ul>
+            </article>
+          </div>
+
+          <p class="menu-disclaimer" data-i18n="menu.disclaimer">
+            Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.
+          </p>
+        </div>
+      </section>
+
+      <section id="about" class="section about-section">
+        <div class="container about-grid">
+          <div>
+            <p class="eyebrow" data-i18n="about.eyebrow">Who we are</p>
+            <h2 data-i18n="about.title">Venezuela + Mexican street food</h2>
+            <p data-i18n="about.body">
+              Sazón 24/7 brings bold Venezuelan and Mexican street-food flavor to downtown Toledo —
+              arepas, empanadas, pasteles, tacos, quesabirria, loaded plates, and late-night
+              cravings covered. Whether you’re grabbing a quick bite or fueling up after hours,
+              the kitchen is ready when you are.
+            </p>
+            <p class="about-highlight" data-i18n="about.highlight">Flavor that never stops.</p>
+          </div>
+          <aside class="about-card">
+            <h3 data-i18n="about.orderTitle">Order &amp; pickup</h3>
+            <p data-i18n="about.orderBody">Call ahead or stop in at 322 N. Erie St.</p>
+            <a class="btn btn-primary btn-block" href="tel:4198206767">Call 419.820.6767</a>
+            <a
+              class="btn btn-ghost btn-block"
+              href="https://maps.google.com/?q=322+N+Erie+St,+Toledo,+OH"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="about.directions"
+            >
+              Get directions
+            </a>
+          </aside>
+        </div>
+      </section>
+
+      <section id="visit" class="section visit-section">
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow" data-i18n="visit.eyebrow">Find us</p>
+            <h2 data-i18n="visit.title">Visit Sazón 24/7</h2>
+          </header>
+          <div class="visit-grid">
+            <div class="visit-card">
+              <h3 data-i18n="visit.location">Location</h3>
+              <p>
+                322 N. Erie St.<br />
+                <span data-i18n="visit.city">Downtown Toledo, Ohio</span>
+              </p>
+              <a
+                href="https://maps.google.com/?q=322+N+Erie+St,+Toledo,+OH"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="visit.maps"
+              >
+                Open in Maps →
+              </a>
+            </div>
+            <div class="visit-card">
+              <h3 data-i18n="visit.hours">Hours</h3>
+              <p class="hours-24" data-i18n="visit.open247">Open 24/7</p>
+              <p class="muted" data-i18n="visit.hoursNote">Flavor that never stops — day or night.</p>
+            </div>
+            <div class="visit-card">
+              <h3 data-i18n="visit.phone">Phone</h3>
+              <p><a class="phone-link" href="tel:4198206767">419.820.6767</a></p>
+              <p class="muted" data-i18n="visit.phoneNote">Call for takeout or questions.</p>
+            </div>
+          </div>
+          <div class="map-wrap">
+            <iframe
+              data-i18n-title="visit.mapTitle"
+              title="Map to Sazón 24/7 at 322 N. Erie St, Toledo"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=322%20N%20Erie%20St%2C%20Toledo%2C%20OH&z=16&output=embed"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <p class="footer-brand">Sazón 24/7</p>
+          <p class="muted" data-i18n="footer.tag">Venezuelan + Mexican street food · Downtown Toledo</p>
+        </div>
+        <div class="footer-links">
+          <a href="#menu" data-i18n="nav.menu">Menu</a>
+          <a href="tel:4198206767">419.820.6767</a>
+          <a
+            href="https://maps.google.com/?q=322+N+Erie+St,+Toledo,+OH"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="footer.directions"
+          >
+            Directions
+          </a>
+        </div>
+      </div>
+      <p class="footer-copy container">
+        © <span id="year"></span> Sazón 24/7. <span data-i18n="footer.rights">All rights reserved.</span>
+      </p>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
