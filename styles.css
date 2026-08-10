@@ -145,9 +145,26 @@ a:hover {
 .logo {
   text-decoration: none;
   display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: inherit;
+}
+
+.logo-img {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow:
+    0 0 0 2px rgba(245, 197, 24, 0.45),
+    0 8px 20px rgba(0, 0, 0, 0.4);
+  background: #000;
+}
+
+.logo-wordmark {
+  display: flex;
   align-items: baseline;
   gap: 0.35rem;
-  color: inherit;
 }
 
 .logo-mark {
@@ -593,6 +610,12 @@ a:hover {
 
 @media (min-width: 700px) {
   .visit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .visit-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -602,6 +625,45 @@ a:hover {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.35rem;
+}
+
+.email-link,
+.social-link {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--yellow);
+  word-break: break-word;
+}
+
+.email-link:hover,
+.social-link:hover {
+  color: var(--yellow-soft);
+}
+
+.contact-flyer {
+  margin: 0 0 1.75rem;
+  padding: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  max-width: 28rem;
+}
+
+.contact-flyer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.contact-flyer figcaption {
+  margin: 0;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
 }
 
 .visit-card h3 {
