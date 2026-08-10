@@ -3,6 +3,12 @@
 Marketing site for **Sazón 24/7**, Venezuelan + Mexican street food in downtown Toledo.
 
 **Address:** 332 N. Erie St., Downtown Toledo  
+
+### Facebook specials (auto-updating)
+- Live timeline: Facebook Page Plugin on the **Specials** section (`#specials`)
+- Featured card: `public/announcements.json` (refreshes every 10 minutes + on tab focus)
+- Edit `announcements.json` → `featured` to pin a special day / promo; leave `"active": true`
+- Page: https://www.facebook.com/share/1EcUBacwAo/  
 **Phone:** 419.820.6767
 
 ## Preview locally

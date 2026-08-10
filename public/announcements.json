@@ -1,0 +1,24 @@
+{
+  "updated": "2026-08-10T18:00:00Z",
+  "facebookPage": "https://www.facebook.com/people/Sazon-247/61592829363284/",
+  "facebookShare": "https://www.facebook.com/share/1EcUBacwAo/",
+  "featured": {
+    "active": true,
+    "badge": { "en": "From Facebook", "es": "Desde Facebook" },
+    "title": {
+      "en": "Come try our Venezuelan arepas",
+      "es": "Ven a probar nuestras arepas venezolanas"
+    },
+    "body": {
+      "en": "Good morning everyone! Come over and try our arepas venezolanas — so delicious. Follow us on Facebook for special days, hours, and kitchen news.",
+      "es": "¡Buenos días! Ven a probar nuestras arepas venezolanas — deliciosas. Síguenos en Facebook para días especiales, horarios y novedades."
+    },
+    "cta": {
+      "en": "See Facebook updates",
+      "es": "Ver actualizaciones en Facebook"
+    },
+    "href": "https://www.facebook.com/share/1EcUBacwAo/",
+    "date": "2026-08-10"
+  },
+  "highlights": []
+}

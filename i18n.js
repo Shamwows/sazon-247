@@ -9,6 +9,7 @@ window.SAZON_I18N = {
       'Sazón 24/7 — Venezuelan + Mexican street food in downtown Toledo. Flavor that never stops. 332 N. Erie St. Call 419.820.6767',
     'skip': 'Skip to menu',
     'nav.menu': 'Menu',
+    'nav.specials': 'Specials',
     'nav.about': 'About',
     'nav.visit': 'Visit',
     'nav.call': 'Call',
@@ -23,6 +24,15 @@ window.SAZON_I18N = {
     'hero.sub':
       'Venezuelan + Mexican street food — arepas, empanadas, tacos, quesabirria, burgers, and more. Open around the clock when you’re hungry.',
     'hero.ctaMenu': 'See the menu',
+    'hero.ctaSpecials': 'What’s new',
+    'specials.eyebrow': 'From Facebook',
+    'specials.title': 'Specials & updates',
+    'specials.lead':
+      'Big days, specials, and kitchen news — pulled live from Sazón 24/7 on Facebook so the site stays current.',
+    'specials.liveBadge': 'Live from Facebook',
+    'specials.loading': 'Loading latest update…',
+    'specials.error': 'Couldn’t load the highlight — the live Facebook feed is still below.',
+    'specials.openFb': 'Open full Facebook page →',
     'menu.eyebrow': 'Welcome to the menu',
     'menu.title': 'What we’re serving',
     'menu.lead':
@@ -153,6 +163,7 @@ window.SAZON_I18N = {
       'Sazón 24/7 — Comida callejera venezolana y mexicana en el centro de Toledo. Sabor que no para. 332 N. Erie St. Llama al 419.820.6767',
     'skip': 'Ir al menú',
     'nav.menu': 'Menú',
+    'nav.specials': 'Especiales',
     'nav.about': 'Nosotros',
     'nav.visit': 'Visítanos',
     'nav.call': 'Llamar',
@@ -167,6 +178,15 @@ window.SAZON_I18N = {
     'hero.sub':
       'Comida callejera venezolana y mexicana — arepas, empanadas, tacos, quesabirria, hamburguesas y más. Abiertos las 24 horas cuando te dé hambre.',
     'hero.ctaMenu': 'Ver el menú',
+    'hero.ctaSpecials': 'Novedades',
+    'specials.eyebrow': 'Desde Facebook',
+    'specials.title': 'Especiales y novedades',
+    'specials.lead':
+      'Días especiales, promociones y noticias de la cocina — actualizado en vivo desde Facebook de Sazón 24/7.',
+    'specials.liveBadge': 'En vivo desde Facebook',
+    'specials.loading': 'Cargando la última actualización…',
+    'specials.error': 'No se pudo cargar el destacado — el feed de Facebook sigue abajo.',
+    'specials.openFb': 'Abrir página de Facebook →',
     'menu.eyebrow': 'Bienvenido al menú',
     'menu.title': 'Lo que servimos',
     'menu.lead':
