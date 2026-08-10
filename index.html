@@ -89,51 +89,70 @@
         </div>
       </section>
 
-      <!-- Live Facebook specials + feed (auto-updates from the public page) -->
+      <!-- Rotating announcements + compact live Facebook feed -->
       <section id="specials" class="section specials-section" aria-labelledby="specials-title">
         <div class="container">
-          <header class="section-head">
-            <p class="eyebrow" data-i18n="specials.eyebrow">From Facebook</p>
-            <h2 id="specials-title" data-i18n="specials.title">Specials &amp; updates</h2>
-            <p class="section-lead" data-i18n="specials.lead">
-              Big days, specials, and kitchen news — pulled live from Sazón 24/7 on Facebook so the site stays current.
-            </p>
+          <header class="section-head specials-head">
+            <div>
+              <p class="eyebrow" data-i18n="specials.eyebrow">From Facebook</p>
+              <h2 id="specials-title" data-i18n="specials.title">Specials &amp; updates</h2>
+              <p class="section-lead" data-i18n="specials.lead">
+                Rotating kitchen news and specials — plus a live Facebook feed.
+              </p>
+            </div>
+            <a
+              class="btn btn-ghost specials-fb-btn"
+              href="https://www.facebook.com/share/1EcUBacwAo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="specials.openFb"
+            >
+              Open Facebook →
+            </a>
           </header>
 
           <div class="specials-layout">
-            <div class="specials-featured" data-fb-featured>
-              <div class="specials-featured-card is-loading" data-fb-featured-card>
-                <p class="specials-badge" data-i18n="specials.liveBadge">Live from Facebook</p>
-                <p class="specials-loading" data-i18n="specials.loading">Loading latest update…</p>
+            <div class="announce-carousel" data-announce-carousel aria-roledescription="carousel" aria-label="Announcements">
+              <div class="announce-track" data-announce-track>
+                <div class="announce-slide is-loading is-active">
+                  <p class="specials-badge" data-i18n="specials.liveBadge">Live updates</p>
+                  <p class="specials-loading" data-i18n="specials.loading">Loading…</p>
+                </div>
+              </div>
+              <div class="announce-controls">
+                <button type="button" class="announce-nav" data-announce-prev aria-label="Previous announcement">‹</button>
+                <div class="announce-dots" data-announce-dots role="tablist" aria-label="Announcement slides"></div>
+                <button type="button" class="announce-nav" data-announce-next aria-label="Next announcement">›</button>
               </div>
             </div>
 
             <div class="specials-feed">
-              <div class="fb-feed-frame" data-fb-feed>
-                <iframe
-                  title="Sazón 24/7 Facebook posts"
-                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fpeople%2FSazon-247%2F61592829363284%2F&amp;tabs=timeline&amp;width=500&amp;height=720&amp;small_header=true&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=false&amp;appId"
-                  width="500"
-                  height="720"
-                  style="border: none; overflow: hidden; width: 100%; max-width: 500px; min-height: 640px"
-                  scrolling="no"
-                  frameborder="0"
-                  allowfullscreen="true"
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                ></iframe>
+              <div class="fb-feed-shell">
+                <div class="fb-feed-bar">
+                  <span data-i18n="specials.feedLabel">Live Facebook</span>
+                  <a
+                    href="https://www.facebook.com/share/1EcUBacwAo/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-i18n="specials.openFbShort"
+                  >Open page ↗</a>
+                </div>
+                <div class="fb-feed-frame" data-fb-feed>
+                  <iframe
+                    title="Sazón 24/7 Facebook posts"
+                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fpeople%2FSazon-247%2F61592829363284%2F&amp;tabs=timeline&amp;width=500&amp;height=480&amp;small_header=true&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=false"
+                    width="500"
+                    height="480"
+                    style="border: none; overflow: hidden; width: 100%; max-width: 500px"
+                    scrolling="no"
+                    frameborder="0"
+                    allowfullscreen="true"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                  ></iframe>
+                </div>
               </div>
-              <p class="specials-feed-note">
-                <a
-                  href="https://www.facebook.com/share/1EcUBacwAo/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n="specials.openFb"
-                >
-                  Open full Facebook page →
-                </a>
-              </p>
             </div>
           </div>
         </div>

@@ -1,24 +1,68 @@
 {
-  "updated": "2026-08-10T18:00:00Z",
+  "updated": "2026-08-10T19:00:00Z",
   "facebookPage": "https://www.facebook.com/people/Sazon-247/61592829363284/",
   "facebookShare": "https://www.facebook.com/share/1EcUBacwAo/",
-  "featured": {
-    "active": true,
-    "badge": { "en": "From Facebook", "es": "Desde Facebook" },
-    "title": {
-      "en": "Come try our Venezuelan arepas",
-      "es": "Ven a probar nuestras arepas venezolanas"
+  "rotateSeconds": 6,
+  "announcements": [
+    {
+      "active": true,
+      "badge": { "en": "Kitchen", "es": "Cocina" },
+      "title": {
+        "en": "Come try our Venezuelan arepas",
+        "es": "Ven a probar nuestras arepas venezolanas"
+      },
+      "body": {
+        "en": "Good morning everyone! Come over and try our arepas venezolanas — so delicious.",
+        "es": "¡Buenos días! Ven a probar nuestras arepas venezolanas — deliciosas."
+      },
+      "cta": { "en": "See on Facebook", "es": "Ver en Facebook" },
+      "href": "https://www.facebook.com/share/1EcUBacwAo/",
+      "date": "2026-08-10"
     },
-    "body": {
-      "en": "Good morning everyone! Come over and try our arepas venezolanas — so delicious. Follow us on Facebook for special days, hours, and kitchen news.",
-      "es": "¡Buenos días! Ven a probar nuestras arepas venezolanas — deliciosas. Síguenos en Facebook para días especiales, horarios y novedades."
+    {
+      "active": true,
+      "badge": { "en": "Always open", "es": "Siempre abierto" },
+      "title": {
+        "en": "Open 24/7 downtown",
+        "es": "Abierto 24/7 en el centro"
+      },
+      "body": {
+        "en": "Flavor that never stops — day or night at 332 N. Erie St., Toledo, OH.",
+        "es": "Sabor que no para — de día o de noche en 332 N. Erie St., Toledo, OH."
+      },
+      "cta": { "en": "Get directions", "es": "Cómo llegar" },
+      "href": "https://maps.google.com/?q=332+N+Erie+St,+Toledo,+OH",
+      "date": "2026-08-10"
     },
-    "cta": {
-      "en": "See Facebook updates",
-      "es": "Ver actualizaciones en Facebook"
+    {
+      "active": true,
+      "badge": { "en": "Order", "es": "Pedidos" },
+      "title": {
+        "en": "Call ahead for takeout",
+        "es": "Llama para llevar"
+      },
+      "body": {
+        "en": "Questions or pickup? Call 419.820.6767 or email elsazon24.7@gmail.com.",
+        "es": "¿Preguntas o retiro? Llama al 419.820.6767 o escribe a elsazon24.7@gmail.com."
+      },
+      "cta": { "en": "Call now", "es": "Llamar" },
+      "href": "tel:4198206767",
+      "date": "2026-08-10"
     },
-    "href": "https://www.facebook.com/share/1EcUBacwAo/",
-    "date": "2026-08-10"
-  },
-  "highlights": []
+    {
+      "active": true,
+      "badge": { "en": "Follow us", "es": "Síguenos" },
+      "title": {
+        "en": "Special days & kitchen news",
+        "es": "Días especiales y novedades"
+      },
+      "body": {
+        "en": "We post specials and events on Facebook first — follow Sazon 24/7 so you never miss a day.",
+        "es": "Publicamos especiales y eventos primero en Facebook — sigue Sazon 24/7 para no perderte nada."
+      },
+      "cta": { "en": "Open Facebook", "es": "Abrir Facebook" },
+      "href": "https://www.facebook.com/share/1EcUBacwAo/",
+      "date": "2026-08-10"
+    }
+  ]
 }

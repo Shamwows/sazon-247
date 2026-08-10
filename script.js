@@ -1,10 +1,15 @@
 (function () {
   const STORAGE_KEY = 'sazon-lang';
   const ANNOUNCEMENTS_URL = 'public/announcements.json';
-  const FB_PAGE =
-    'https://www.facebook.com/people/Sazon-247/61592829363284/';
+  const FB_PAGE = 'https://www.facebook.com/people/Sazon-247/61592829363284/';
   const FB_SHARE = 'https://www.facebook.com/share/1EcUBacwAo/';
   const dict = window.SAZON_I18N || {};
+
+  let carouselTimer = null;
+  let carouselIndex = 0;
+  let carouselItems = [];
+  let rotateMs = 6000;
+  let pauseCarousel = false;
 
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -31,11 +36,22 @@
         weekday: 'short',
         month: 'short',
         day: 'numeric',
-        year: 'numeric',
       });
     } catch {
       return iso;
     }
+  }
+
+  function escapeHtml(str) {
+    return String(str ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function escapeAttr(str) {
+    return escapeHtml(str).replace(/'/g, '&#39;');
   }
 
   function applyLanguage(lang) {
@@ -75,9 +91,8 @@
       btn.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
 
-    // Re-render featured specials in the active language
     if (window.__sazonAnnouncements) {
-      renderFeatured(window.__sazonAnnouncements, code);
+      buildCarousel(window.__sazonAnnouncements, code, { keepIndex: true });
     }
 
     try {
@@ -88,9 +103,7 @@
   }
 
   document.querySelectorAll('[data-lang]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      applyLanguage(btn.getAttribute('data-lang'));
-    });
+    btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
   });
 
   let initial = 'en';
@@ -102,7 +115,6 @@
   }
   applyLanguage(initial);
 
-  // Mobile nav
   const toggle = document.querySelector('.nav-toggle');
   const mobileNav = document.getElementById('mobile-nav');
   if (toggle && mobileNav) {
@@ -112,135 +124,197 @@
       toggle.setAttribute('aria-label', t(lang, open ? 'nav.close' : 'nav.open'));
       mobileNav.hidden = !open;
     };
-
     toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') !== 'true';
-      setOpen(open);
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
     });
-
     mobileNav.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => setOpen(false));
     });
   }
 
-  /**
-   * Featured specials card — loaded from announcements.json (auto-refresh).
-   * The Facebook timeline iframe beside it always shows the live public page feed.
-   */
-  function renderFeatured(data, lang) {
-    const card = document.querySelector('[data-fb-featured-card]');
-    if (!card) return;
+  function stopCarouselTimer() {
+    if (carouselTimer) {
+      clearInterval(carouselTimer);
+      carouselTimer = null;
+    }
+  }
 
-    const featured = data && data.featured;
-    if (!featured || featured.active === false) {
-      card.classList.remove('is-loading');
-      card.innerHTML = `
-        <p class="specials-badge">${escapeHtml(t(lang, 'specials.liveBadge'))}</p>
-        <h3>${escapeHtml(t(lang, 'specials.title'))}</h3>
-        <p>${escapeHtml(t(lang, 'specials.lead'))}</p>
-        <a class="btn btn-primary" href="${escapeAttr(data?.facebookShare || FB_SHARE)}" target="_blank" rel="noopener noreferrer">
-          ${escapeHtml(t(lang, 'specials.openFb'))}
-        </a>
+  function startCarouselTimer() {
+    stopCarouselTimer();
+    if (carouselItems.length < 2 || pauseCarousel) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    carouselTimer = setInterval(() => goSlide(carouselIndex + 1), rotateMs);
+  }
+
+  function goSlide(next) {
+    if (!carouselItems.length) return;
+    const n = ((next % carouselItems.length) + carouselItems.length) % carouselItems.length;
+    carouselIndex = n;
+    const track = document.querySelector('[data-announce-track]');
+    const dots = document.querySelector('[data-announce-dots]');
+    if (track) {
+      track.querySelectorAll('.announce-slide').forEach((slide, i) => {
+        slide.classList.toggle('is-active', i === n);
+        slide.setAttribute('aria-hidden', i === n ? 'false' : 'true');
+      });
+    }
+    if (dots) {
+      dots.querySelectorAll('.announce-dot').forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === n);
+        dot.setAttribute('aria-selected', i === n ? 'true' : 'false');
+      });
+    }
+  }
+
+  function buildCarousel(data, lang, opts = {}) {
+    const track = document.querySelector('[data-announce-track]');
+    const dots = document.querySelector('[data-announce-dots]');
+    if (!track) return;
+
+    const keepIndex = Boolean(opts.keepIndex);
+    const prevIndex = carouselIndex;
+
+    let items = [];
+    if (Array.isArray(data.announcements) && data.announcements.length) {
+      items = data.announcements.filter((a) => a && a.active !== false);
+    } else if (data.featured && data.featured.active !== false) {
+      items = [data.featured];
+    }
+
+    carouselItems = items;
+    rotateMs = Math.max(4000, Number(data.rotateSeconds || 6) * 1000);
+
+    if (!items.length) {
+      track.innerHTML = `
+        <div class="announce-slide is-active">
+          <p class="specials-badge">${escapeHtml(t(lang, 'specials.liveBadge'))}</p>
+          <h3>${escapeHtml(t(lang, 'specials.title'))}</h3>
+          <p class="announce-body">${escapeHtml(t(lang, 'specials.lead'))}</p>
+          <a class="btn btn-primary" href="${escapeAttr(data.facebookShare || FB_SHARE)}" target="_blank" rel="noopener noreferrer">
+            ${escapeHtml(t(lang, 'specials.openFb'))}
+          </a>
+        </div>
       `;
+      if (dots) dots.innerHTML = '';
+      stopCarouselTimer();
       return;
     }
 
-    const badge = pickLocalized(featured.badge, lang) || t(lang, 'specials.liveBadge');
-    const title = pickLocalized(featured.title, lang);
-    const body = pickLocalized(featured.body, lang);
-    const cta = pickLocalized(featured.cta, lang) || t(lang, 'specials.openFb');
-    const href = featured.href || data.facebookShare || FB_SHARE;
-    const dateLabel = formatDate(featured.date || data.updated, lang);
-
-    card.classList.remove('is-loading');
-    card.innerHTML = `
-      <p class="specials-badge">${escapeHtml(badge)}</p>
-      ${dateLabel ? `<span class="specials-date">${escapeHtml(dateLabel)}</span>` : ''}
-      <h3>${escapeHtml(title)}</h3>
-      <p>${escapeHtml(body)}</p>
-      <a class="btn btn-primary" href="${escapeAttr(href)}" target="_blank" rel="noopener noreferrer">
-        ${escapeHtml(cta)}
-      </a>
-    `;
-
-    // Optional extra highlights under the card
-    const host = document.querySelector('[data-fb-featured]');
-    if (!host) return;
-    let list = host.querySelector('[data-fb-highlights]');
-    if (!list) {
-      list = document.createElement('div');
-      list.className = 'specials-highlights';
-      list.setAttribute('data-fb-highlights', '');
-      host.appendChild(list);
-    }
-    const highlights = Array.isArray(featured.highlights)
-      ? featured.highlights
-      : Array.isArray(data.highlights)
-        ? data.highlights
-        : [];
-    if (!highlights.length) {
-      list.innerHTML = '';
-      list.hidden = true;
-      return;
-    }
-    list.hidden = false;
-    list.innerHTML = highlights
-      .map((h) => {
-        const ht = pickLocalized(h.title, lang);
-        const hb = pickLocalized(h.body, lang);
-        if (!ht && !hb) return '';
-        return `<article class="specials-highlight"><h4>${escapeHtml(ht)}</h4><p>${escapeHtml(hb)}</p></article>`;
+    track.innerHTML = items
+      .map((item, i) => {
+        const badge = pickLocalized(item.badge, lang) || t(lang, 'specials.liveBadge');
+        const title = pickLocalized(item.title, lang);
+        const body = pickLocalized(item.body, lang);
+        const cta = pickLocalized(item.cta, lang) || t(lang, 'specials.openFb');
+        const href = item.href || data.facebookShare || FB_SHARE;
+        const dateLabel = formatDate(item.date || data.updated, lang);
+        const external = /^https?:/i.test(href);
+        return `
+          <article class="announce-slide${i === 0 ? ' is-active' : ''}" data-slide-index="${i}" aria-hidden="${i === 0 ? 'false' : 'true'}">
+            <p class="specials-badge">${escapeHtml(badge)}</p>
+            ${dateLabel ? `<span class="specials-date">${escapeHtml(dateLabel)}</span>` : ''}
+            <h3>${escapeHtml(title)}</h3>
+            <p class="announce-body">${escapeHtml(body)}</p>
+            <a class="btn btn-primary" href="${escapeAttr(href)}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>
+              ${escapeHtml(cta)}
+            </a>
+          </article>
+        `;
       })
       .join('');
+
+    if (dots) {
+      dots.innerHTML = items
+        .map(
+          (_, i) =>
+            `<button type="button" class="announce-dot${i === 0 ? ' is-active' : ''}" data-dot-index="${i}" role="tab" aria-selected="${i === 0 ? 'true' : 'false'}" aria-label="Announcement ${i + 1}"></button>`
+        )
+        .join('');
+      dots.querySelectorAll('.announce-dot').forEach((dot) => {
+        dot.addEventListener('click', () => {
+          goSlide(Number(dot.getAttribute('data-dot-index')));
+          startCarouselTimer();
+        });
+      });
+    }
+
+    if (keepIndex && items.length) {
+      goSlide(Math.min(prevIndex, items.length - 1));
+    } else {
+      carouselIndex = 0;
+      goSlide(0);
+    }
+    startCarouselTimer();
   }
 
-  function escapeHtml(str) {
-    return String(str ?? '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
+  document.querySelector('[data-announce-prev]')?.addEventListener('click', () => {
+    goSlide(carouselIndex - 1);
+    startCarouselTimer();
+  });
+  document.querySelector('[data-announce-next]')?.addEventListener('click', () => {
+    goSlide(carouselIndex + 1);
+    startCarouselTimer();
+  });
 
-  function escapeAttr(str) {
-    return escapeHtml(str).replace(/'/g, '&#39;');
+  const carousel = document.querySelector('[data-announce-carousel]');
+  if (carousel) {
+    carousel.addEventListener('mouseenter', () => {
+      pauseCarousel = true;
+      stopCarouselTimer();
+    });
+    carousel.addEventListener('mouseleave', () => {
+      pauseCarousel = false;
+      startCarouselTimer();
+    });
+    carousel.addEventListener('focusin', () => {
+      pauseCarousel = true;
+      stopCarouselTimer();
+    });
+    carousel.addEventListener('focusout', (e) => {
+      if (!carousel.contains(e.relatedTarget)) {
+        pauseCarousel = false;
+        startCarouselTimer();
+      }
+    });
   }
 
   async function loadAnnouncements() {
-    const card = document.querySelector('[data-fb-featured-card]');
-    if (!card) return;
-
     try {
-      const res = await fetch(`${ANNOUNCEMENTS_URL}?t=${Date.now()}`, {
-        cache: 'no-store',
-      });
+      const res = await fetch(`${ANNOUNCEMENTS_URL}?t=${Date.now()}`, { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       window.__sazonAnnouncements = data;
-      renderFeatured(data, currentLang());
+      buildCarousel(data, currentLang());
     } catch {
-      card.classList.remove('is-loading');
-      card.innerHTML = `
-        <p class="specials-badge">${escapeHtml(t(currentLang(), 'specials.liveBadge'))}</p>
-        <p class="specials-error">${escapeHtml(t(currentLang(), 'specials.error'))}</p>
-        <a class="btn btn-primary" href="${escapeAttr(FB_SHARE)}" target="_blank" rel="noopener noreferrer">
-          ${escapeHtml(t(currentLang(), 'specials.openFb'))}
-        </a>
-      `;
+      const track = document.querySelector('[data-announce-track]');
+      if (track) {
+        track.innerHTML = `
+          <div class="announce-slide is-active">
+            <p class="specials-badge">${escapeHtml(t(currentLang(), 'specials.liveBadge'))}</p>
+            <p class="specials-error">${escapeHtml(t(currentLang(), 'specials.error'))}</p>
+            <a class="btn btn-primary" href="${escapeAttr(FB_SHARE)}" target="_blank" rel="noopener noreferrer">
+              ${escapeHtml(t(currentLang(), 'specials.openFb'))}
+            </a>
+          </div>
+        `;
+      }
     }
   }
 
-  // Resize Facebook iframe to container width (plugin prefers ~340–500px)
   function sizeFacebookFeed() {
     const frame = document.querySelector('[data-fb-feed] iframe');
     if (!frame) return;
     const parent = frame.parentElement;
     const width = Math.max(280, Math.min(500, Math.floor(parent.clientWidth || 500)));
+    const height = Math.max(360, Math.min(480, Math.floor(parent.clientHeight || 420)));
     const page = encodeURIComponent(FB_PAGE);
-    const src = `https://www.facebook.com/plugins/page.php?href=${page}&tabs=timeline&width=${width}&height=720&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false`;
-    if (frame.getAttribute('data-width') !== String(width)) {
-      frame.setAttribute('data-width', String(width));
+    const src = `https://www.facebook.com/plugins/page.php?href=${page}&tabs=timeline&width=${width}&height=${height}&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false`;
+    const key = `${width}x${height}`;
+    if (frame.getAttribute('data-size') !== key) {
+      frame.setAttribute('data-size', key);
       frame.setAttribute('width', String(width));
+      frame.setAttribute('height', String(height));
+      frame.style.maxHeight = `${height}px`;
       frame.src = src;
     }
   }
@@ -252,9 +326,13 @@
     window.__sazonFbResize = window.setTimeout(sizeFacebookFeed, 250);
   });
 
-  // Soft refresh featured specials every 10 minutes while the tab is open
   setInterval(loadAnnouncements, 10 * 60 * 1000);
   document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') loadAnnouncements();
+    if (document.visibilityState === 'visible') {
+      loadAnnouncements();
+      startCarouselTimer();
+    } else {
+      stopCarouselTimer();
+    }
   });
 })();
